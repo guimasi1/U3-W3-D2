@@ -1,27 +1,21 @@
-import {
-  Container,
-  Row,
-  Col,
-  ListGroup,
-  ListGroupItem,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import MyNavbar from "./MyNavbar";
 import { Link } from "react-router-dom";
+import { removeFavouriteJobAction } from "../redux/actions";
 
 const Favourites = () => {
   const favouriteJobs = useSelector((state) => {
-    return state.favouriteJobs.content;
+    return state.favouriteJobs.jobs;
   });
-  const removeFavouriteJob = useDispatch();
-  console.log(favouriteJobs);
+  const dispatch = useDispatch();
   return (
     <div>
       <MyNavbar />
       <Container className="mt-5">
         <Row>
           <Col>
+            <h4 className="text-center fw-bold fs-1">FAVOURITE JOBS</h4>
             {favouriteJobs.map((job) => {
               return (
                 <Row
@@ -42,10 +36,11 @@ const Favourites = () => {
                     <Button
                       variant="danger"
                       onClick={() => {
-                        removeFavouriteJob({
-                          type: "REMOVE_FAVOURITE_JOB",
-                          payload: job.data._id,
-                        });
+                        // removeFavouriteJob({
+                        //   type: "REMOVE_FAVOURITE_JOB",
+                        //   payload: job.data._id,
+                        // });
+                        dispatch(removeFavouriteJobAction(job));
                       }}
                     >
                       {" "}

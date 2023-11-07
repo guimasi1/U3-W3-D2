@@ -2,9 +2,11 @@ import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
+import { addToFavouritesAction } from "../redux/actions";
 const Job = ({ data }) => {
   const dispatch = useDispatch();
-  console.log(data);
+  console.log(data, "SONO IN JOB");
+
   return (
     <Row
       className="mx-0 mt-3 p-3"

@@ -3,6 +3,19 @@ export const REMOVE_FAVOURITE_JOB = "REMOVE_FAVOURITE_JOB";
 export const LIST_OF_JOBS = "LIST_OF_JOBS";
 const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
+export const addToFavouritesAction = (data) => {
+  return {
+    type: ADD_TO_FAVOURITES,
+    payload: data,
+  };
+};
+export const removeFavouriteJobAction = (job) => {
+  return {
+    type: REMOVE_FAVOURITE_JOB,
+    payload: job.data._id,
+  };
+};
+
 export const handleSubmitAction = () => {
   return async (dispatch) => {
     console.log("sono nella funzione");
